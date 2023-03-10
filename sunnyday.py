@@ -1,4 +1,5 @@
-import requests
+import requests, pprint
+from datetime import datetime
 
 apikey="4429faaaa08bd6135bd6b3c567c46811"
 
@@ -25,13 +26,14 @@ class Weather:
 
 
 
-    def next_12h(self):
-        pass
+    def weather_data(self):
 
-    def next_12h_simple(self):
-        pass
+        #return (self.data)
+        return (datetime.fromtimestamp(self.data['dt']).isoformat(), self.data['main']['temp'], self.data['weather'][0]['description'])
+
+
 
 
 #weather = Weather(apikey=apikey, city="Roma")
 weather = Weather(apikey=apikey, lat=4.1, lon=3.2)
-print(weather.data)
+pprint.pprint(weather.weather_data())
