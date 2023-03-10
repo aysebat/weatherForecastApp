@@ -15,9 +15,10 @@ class Weather:
             elif lat and lon:
                 url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={apikey}"
             else:
-                print("Provide either a city or lat and lon argument.")
+                raise TypeError("Provide either a city or lat and lon argument.")
         else:
-            print("Please! Provide a valid API key.")
+            raise TypeError("Please! Provide a valid API key.")
+
         r = requests.get(url)
         self.data = r.json()
 
